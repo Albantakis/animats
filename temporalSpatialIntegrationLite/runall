@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd work_c3a1_change_c36a45
+
+EXEC=../build/Release/temporalSpatialIntegrationLite
+
+
+for trial_num in 83 86 87 88
+do
+	$( nice -20 $EXEC "basic.txt" "trial${trial_num}_LOD.txt" "trial${trial_num}_GEN.txt" "trial${trial_num}" ${trial_num} 0 ) > $trial_num"_output.log" &
+done
