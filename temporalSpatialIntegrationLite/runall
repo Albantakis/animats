@@ -1,11 +1,8 @@
 #!/bin/bash
 
-cd work_c3a1_change_c36a45
+cd results/work_c1a3_36/
 
-EXEC=../build/Release/temporalSpatialIntegrationLite
-
-
-for trial_num in 83 86 87 88
+for trial_num in {100..114}
 do
-	$( nice -20 $EXEC "basic.txt" "trial${trial_num}_LOD.txt" "trial${trial_num}_GEN.txt" "trial${trial_num}" ${trial_num} 0 ) > $trial_num"_output.log" &
+  nice -10 ../../build/main.o "basic.txt" "trial${trial_num}_LOD.txt" "trial${trial_num}_GEN.txt" "trial${trial_num}" ${trial_num} 0 2>&1 | tee $trial_num"_output.log" &
 done
