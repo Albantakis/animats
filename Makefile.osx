@@ -1,0 +1,17 @@
+# Compile everything into an executable called main.o
+default:
+	xcodebuild
+clean:
+	rm -rf build
+
+run:
+	# Arguments:
+	# 1. File describing the task for the animats to do
+	# 2. Output file for the line of descent
+	# 3. Output file for the animat genome
+	# 4. The name of the trial
+	# 5. The random seed (positive integer of any size)
+	# 6. Noise level (float between 0 and 1)
+
+	# Script to run all trials:
+	./runall
