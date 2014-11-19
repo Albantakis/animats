@@ -25,7 +25,7 @@ double perSiteMutationRate=0.005;
 int update=0;
 int repeats=1; //1;
 int maxAgent=100;
-int totalGenerations=60000;
+int totalGenerations=30000;
 char trialName[1000];
 double sensorNoise=0.0;
 
