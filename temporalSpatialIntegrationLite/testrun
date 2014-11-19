@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cd test
+
+EXEC=../build/main.o
+
+trial_num=0
+
+echo ""
+echo "Running command:"
+echo "================"
+echo ""
+echo "$EXEC ../input/basic.txt trial${trial_num}_LOD.txt trial${trial_num}_GEN.txt trial${trial_num} ${trial_num} 0"
+echo ""
+echo "================"
+
+echo ./build/main.o "../input/basic.txt" "trial${trial_num}_LOD.txt" "trial${trial_num}_GEN.txt" "trial${trial_num}" ${trial_num} 0 2>&1 | tee "test_output.log"
