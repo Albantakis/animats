@@ -1,0 +1,231 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8464C91315B6F63A00DDF57C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8464C91215B6F63A00DDF57C /* main.cpp */; };
+		8464C91515B6F63A00DDF57C /* temporalSpatialIntegrationLite.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8464C91415B6F63A00DDF57C /* temporalSpatialIntegrationLite.1 */; };
+		8464C92415B6F65A00DDF57C /* tAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8464C91C15B6F65A00DDF57C /* tAgent.cpp */; };
+		8464C92515B6F65A00DDF57C /* tANN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8464C91E15B6F65A00DDF57C /* tANN.cpp */; };
+		8464C92615B6F65A00DDF57C /* tGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8464C92015B6F65A00DDF57C /* tGame.cpp */; };
+		8464C92715B6F65A00DDF57C /* tHMM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8464C92215B6F65A00DDF57C /* tHMM.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8464C90C15B6F63A00DDF57C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8464C91515B6F63A00DDF57C /* temporalSpatialIntegrationLite.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8464C90E15B6F63A00DDF57C /* temporalSpatialIntegrationLite */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = temporalSpatialIntegrationLite; sourceTree = BUILT_PRODUCTS_DIR; };
+		8464C91215B6F63A00DDF57C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8464C91415B6F63A00DDF57C /* temporalSpatialIntegrationLite.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = temporalSpatialIntegrationLite.1; sourceTree = "<group>"; };
+		8464C91B15B6F65A00DDF57C /* globalConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globalConst.h; sourceTree = "<group>"; };
+		8464C91C15B6F65A00DDF57C /* tAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tAgent.cpp; sourceTree = "<group>"; };
+		8464C91D15B6F65A00DDF57C /* tAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tAgent.h; sourceTree = "<group>"; };
+		8464C91E15B6F65A00DDF57C /* tANN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tANN.cpp; sourceTree = "<group>"; };
+		8464C91F15B6F65A00DDF57C /* tANN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tANN.h; sourceTree = "<group>"; };
+		8464C92015B6F65A00DDF57C /* tGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tGame.cpp; sourceTree = "<group>"; };
+		8464C92115B6F65A00DDF57C /* tGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tGame.h; sourceTree = "<group>"; };
+		8464C92215B6F65A00DDF57C /* tHMM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tHMM.cpp; sourceTree = "<group>"; };
+		8464C92315B6F65A00DDF57C /* tHMM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tHMM.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8464C90B15B6F63A00DDF57C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8464C90315B6F63900DDF57C = {
+			isa = PBXGroup;
+			children = (
+				8464C91115B6F63A00DDF57C /* temporalSpatialIntegrationLite */,
+				8464C90F15B6F63A00DDF57C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8464C90F15B6F63A00DDF57C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8464C90E15B6F63A00DDF57C /* temporalSpatialIntegrationLite */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8464C91115B6F63A00DDF57C /* temporalSpatialIntegrationLite */ = {
+			isa = PBXGroup;
+			children = (
+				8464C91215B6F63A00DDF57C /* main.cpp */,
+				8464C91B15B6F65A00DDF57C /* globalConst.h */,
+				8464C91C15B6F65A00DDF57C /* tAgent.cpp */,
+				8464C91D15B6F65A00DDF57C /* tAgent.h */,
+				8464C91E15B6F65A00DDF57C /* tANN.cpp */,
+				8464C91F15B6F65A00DDF57C /* tANN.h */,
+				8464C92015B6F65A00DDF57C /* tGame.cpp */,
+				8464C92115B6F65A00DDF57C /* tGame.h */,
+				8464C92215B6F65A00DDF57C /* tHMM.cpp */,
+				8464C92315B6F65A00DDF57C /* tHMM.h */,
+				8464C91415B6F63A00DDF57C /* temporalSpatialIntegrationLite.1 */,
+			);
+			path = temporalSpatialIntegrationLite;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8464C90D15B6F63A00DDF57C /* temporalSpatialIntegrationLite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8464C91815B6F63A00DDF57C /* Build configuration list for PBXNativeTarget "temporalSpatialIntegrationLite" */;
+			buildPhases = (
+				8464C90A15B6F63A00DDF57C /* Sources */,
+				8464C90B15B6F63A00DDF57C /* Frameworks */,
+				8464C90C15B6F63A00DDF57C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = temporalSpatialIntegrationLite;
+			productName = temporalSpatialIntegrationLite;
+			productReference = 8464C90E15B6F63A00DDF57C /* temporalSpatialIntegrationLite */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8464C90515B6F63900DDF57C /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 8464C90815B6F63900DDF57C /* Build configuration list for PBXProject "temporalSpatialIntegrationLite" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8464C90315B6F63900DDF57C;
+			productRefGroup = 8464C90F15B6F63A00DDF57C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8464C90D15B6F63A00DDF57C /* temporalSpatialIntegrationLite */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8464C90A15B6F63A00DDF57C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8464C91315B6F63A00DDF57C /* main.cpp in Sources */,
+				8464C92415B6F65A00DDF57C /* tAgent.cpp in Sources */,
+				8464C92515B6F65A00DDF57C /* tANN.cpp in Sources */,
+				8464C92615B6F65A00DDF57C /* tGame.cpp in Sources */,
+				8464C92715B6F65A00DDF57C /* tHMM.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8464C91615B6F63A00DDF57C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8464C91715B6F63A00DDF57C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8464C91915B6F63A00DDF57C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8464C91A15B6F63A00DDF57C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8464C90815B6F63900DDF57C /* Build configuration list for PBXProject "temporalSpatialIntegrationLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8464C91615B6F63A00DDF57C /* Debug */,
+				8464C91715B6F63A00DDF57C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8464C91815B6F63A00DDF57C /* Build configuration list for PBXNativeTarget "temporalSpatialIntegrationLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8464C91915B6F63A00DDF57C /* Debug */,
+				8464C91A15B6F63A00DDF57C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8464C90515B6F63900DDF57C /* Project object */;
+}
