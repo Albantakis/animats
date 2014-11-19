@@ -74,15 +74,15 @@ void tGame::executeGame(tAgent* agent,FILE *f,double sensorNoise, int repeat){
                 //Larissa: Change environment after 30,000 Gen, if patterns is 1 7 15 3 it changes 
                 //from 2 blocks with 1 7 to 4 blocks with 1 7 15 3 
                 //if (agent->born > nowUpdate || i<2){
-                if (agent->born > nowUpdate){
-                    world=patterns[i];                  
-                    //cout<<world<<endl;
-                } else{
-                    //world=patterns[i-2];
-                    if (i == 0 || i == 2) world=7;
-                    else if (i==1 || i == 3) world=1;
-                    //cout<<world<<endl;
-                }    
+//                if (agent->born > nowUpdate){
+                    world=patterns[i];
+//                    //cout<<world<<endl;
+//                } else{
+//                    //world=patterns[i-2];
+//                    if (i == 0 || i == 2) world=7;
+//                    else if (i==1 || i == 3) world=1;
+//                    //cout<<world<<endl;
+//                }    
                 agent->resetBrain();
                 botPos=k;
                 blockPos=0;
@@ -178,15 +178,15 @@ vector<vector<int> > tGame::executeGameLogStates(tAgent* agent,double sensorNois
             for(k=0;k<16;k++){
                 //Larissa: Change environment after 30,000 Gen
                 //if (agent->born > nowUpdate || i<2){
-                if (agent->born > nowUpdate){
-                    world=patterns[i];                  
-                    //cout<<world<<endl;
-                } else{
-                    //world=patterns[i-2];
-                    if (i == 0 || i == 2) world=7;
-                    else if (i==1 || i == 3) world=1;
-                    //cout<<world<<endl;
-                }    
+//                if (agent->born > nowUpdate){
+                   world=patterns[i];
+//                    //cout<<world<<endl;
+//                } else{
+//                    //world=patterns[i-2];
+//                    if (i == 0 || i == 2) world=7;
+//                    else if (i==1 || i == 3) world=1;
+//                    //cout<<world<<endl;
+//                }    
                 agent->resetBrain();
                 botPos=k;
                 blockPos=0;
@@ -296,15 +296,15 @@ void tGame::analyseKO(tAgent* agent,int which, int setTo,double sensorNoise){
             for(k=0;k<16;k++){
                 //Larissa: Change environment after 30,000 Gen
                 //if (agent->born > nowUpdate || i<2){
-                if (agent->born > nowUpdate){
+//                if (agent->born > nowUpdate){
                     world=patterns[i];                  
-                    //cout<<world<<endl;
-                } else{
-                    //world=patterns[i-2];
-                    if (i == 0 || i == 2) world=7;
-                    else if (i==1 || i == 3) world=1;
-                    //cout<<world<<endl;
-                }    
+//                    //cout<<world<<endl;
+//                } else{
+//                    //world=patterns[i-2];
+//                    if (i == 0 || i == 2) world=7;
+//                    else if (i==1 || i == 3) world=1;
+//                    //cout<<world<<endl;
+//                }    
                 agent->resetBrain();
                 botPos=k;
                 blockPos=0;
