@@ -26,6 +26,16 @@ tAgent::tAgent(){
 	totalSteps=0;
 	retired=false;
 	food=0;
+    //
+    // Metric for distance
+    energy=0; // number of steps given by animat
+    distance=0; // relative distance
+    // Parameters to be estimated , no clear how
+    // agent energy threshold
+    //glucose_threshold= INT_MIN; // For have the animat without threshold at all, the animat moves as usual, when action is 2 or 3
+    glucose_threshold= 0;
+    // glucose_threshold= INT_MIN;
+    glucose_init_level= 12; // initial level of energ for the animat 128/2 +1
 #ifdef useANN
 	ANN=new tANN;
 #endif
@@ -98,6 +108,7 @@ void tAgent::ampUpStartCodons(void){
 	}
 }
 
+//Called for each agent, when initialize before generations loop and after
 void tAgent::inherit(tAgent *from,double mutationRate,int theTime){
 	int nucleotides=from->genome.size();
 	int i,s,o,w;
@@ -110,19 +121,22 @@ void tAgent::inherit(tAgent *from,double mutationRate,int theTime){
 	genome.resize(from->genome.size());
 	for(i=0;i<nucleotides;i++)
 		if(((double)rand()/(double)RAND_MAX)<mutationRate)
+            //change values of the genome for that agent, the bigger the mutation rate the more likely this happens
 			genome[i]=rand()&255;
 		else
 			genome[i]=from->genome[i];
 	if((((double)rand()/(double)RAND_MAX)<0.05)&&(genome.size()<20000)){
-		//duplication
+		//duplication el dupl. parameter 0.05 por el forro
 		w=15+rand()&511;
 		s=rand()%(genome.size()-w);
 		o=rand()%genome.size();
 		buffer.clear();
+        //void insert (iterator position, InputIterator first, InputIterator last);
 		buffer.insert(buffer.begin(),genome.begin()+s,genome.begin()+s+w);
 		genome.insert(genome.begin()+o,buffer.begin(),buffer.end());
 	}
 	if((((double)rand()/(double)RAND_MAX)<0.02)&&(genome.size()>1000)){
+        //0.02 por el mismo forro
 		//deletion
 		w=15+rand()&511;
 		s=rand()%(genome.size()-w);
@@ -130,6 +144,9 @@ void tAgent::inherit(tAgent *from,double mutationRate,int theTime){
 	}
 	setupPhenotype();
 	fitness=0.0;
+    mutinfagent=fitness;
+
+// OJO this is commented #define useANN in tAgent.h
 #ifdef useANN
 	ANN->inherit(ancestor->ANN,mutationRate);
 #endif
@@ -226,10 +243,11 @@ tAgent* tAgent::findLMRCA(void){
 	}
 }
 
+//This function is never called
 void tAgent::saveFromLMRCAtoNULL(FILE *statsFile,FILE *genomeFile){
 	if(ancestor!=NULL)
 		ancestor->saveFromLMRCAtoNULL(statsFile,genomeFile);
-	if(!saved){ 
+	if(!saved){
 		fprintf(statsFile,"%i	%i	%i	%f	%i	%f	%i	%i\n",ID,born,genome.size(),fitness,bestSteps,(float)totalSteps/(float)nrOfOffspring,correct,incorrect);
 		fprintf(genomeFile,"%i	",ID);
 		for(int i=0;i<genome.size();i++)
@@ -239,6 +257,8 @@ void tAgent::saveFromLMRCAtoNULL(FILE *statsFile,FILE *genomeFile){
 	}
 	if((saved)&&(retired)) genome.clear();
 }
+//This function has the same name than saveLOD in main.cpp! DANGER
+//In main: void saveLOD(tGame *game,tAgent *agent,FILE *statsFile,FILE *genomeFile)
 void tAgent::saveLOD(FILE *statsFile,FILE *genomeFile){
 	if(ancestor!=NULL)
 		ancestor->saveLOD(statsFile,genomeFile);
@@ -246,15 +266,15 @@ void tAgent::saveLOD(FILE *statsFile,FILE *genomeFile){
 	fprintf(genomeFile,"%i	",ID);
 	fprintf(statsFile,"%i	%i	%i	%f	%i	%f	%i	%i\n",ID,born,(int)genome.size(),fitness,bestSteps,(float)totalSteps/(float)nrOfOffspring,correct,incorrect);
 	ANN->saveLOD(genomeFile);
-#else	
+#else
     fprintf(statsFile,"%i	%i	%f	%i	%f	%i	%i\n",ID,born,fitness,bestSteps,(float)totalSteps/(float)nrOfOffspring,correct,incorrect);
     if(!retired){
         for(int i=0;i<genome.size();i++)
             fprintf(genomeFile,"%i  ",genome[i]);
-        fprintf(genomeFile,"\n");
+            fprintf(genomeFile,"\n");
     }
 #endif
-	
+
 }
 
 void tAgent::showPhenotype(void){
@@ -284,10 +304,10 @@ void tAgent::saveToDot(char *filename){
 		}
 	//	fprintf(f,"	}\n");
 	}
-	fprintf(f,"	{ rank=same; 0;  1;  2;  3;  4;  5;  6;  7; 8;}\n"); 
-	fprintf(f,"	{ rank=same; 9; 10; 11; 12; 13; 14; 15; 16; 17; }\n"); 
-	fprintf(f,"	{ rank=same; 18; 19; 20; 21; 22; 23; 24; 25; 26; 27; 28;}\n"); 
-	fprintf(f,"	{ rank=same; 29; 30; 31; }\n"); 
+	fprintf(f,"	{ rank=same; 0;  1;  2;  3;  4;  5;  6;  7; 8;}\n");
+	fprintf(f,"	{ rank=same; 9; 10; 11; 12; 13; 14; 15; 16; 17; }\n");
+	fprintf(f,"	{ rank=same; 18; 19; 20; 21; 22; 23; 24; 25; 26; 27; 28;}\n");
+	fprintf(f,"	{ rank=same; 29; 30; 31; }\n");
 	fprintf(f,"}\n");
 	fclose(f);
 }
@@ -302,7 +322,7 @@ void tAgent::saveToDotFullLayout(char *filename){
 			fprintf(f,"	t0_%i -> MM_%i\n",hmmus[i]->ins[j],i);
 		for(k=0;k<hmmus[i]->outs.size();k++)
 			fprintf(f,"	MM_%i -> t1_%i\n",i,hmmus[i]->outs[k]);
-		
+
 	}
 	fprintf(f,"}\n");
 }
@@ -346,7 +366,7 @@ void tAgent::saveGenome(FILE *f){
 	int i;
 	for(i=0;i<genome.size();i++)
 		fprintf(f,"%i	",genome[i]);
-	fprintf(f,"\n");
+        fprintf(f,"\n");
 }
 
 void tAgent::saveEdgeList(char *filename){

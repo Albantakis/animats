@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+//
 //#define useANN
 
 using namespace std;
@@ -43,8 +43,32 @@ public:
 	tAgent *ancestor;
 	unsigned int nrPointingAtMe;
 	unsigned char states[maxNodes],newStates[maxNodes];
-	double fitness,convFitness;
+    //
+	double fitness,convFitness,sentropy, energy, distance;
+    // Agent properties for glucose project
+    //hitvector 128 compoents with -1 if block missed +1 (0 neutral) if block catched. Note in this schema we do not conider the std fitness of catching vs avoiding. This schema can be modified
+    vector<int> hitvector;
+    //initial level of glucose for an agent, this attribute isused if the agent can mobe for having a glucose level beyond a threhold
+    int glucose_init_level;
+    //the minimum value of glucose required for making the agent moves
+    int glucose_threshold; //
+    
+    //glucose_value= sum(hitvector) + glucose_init_level
+    int glucose_current_value;
+    // agent moves if motors && glucose_threshold <= glucose
+    vector<int> distancestates_list, glucose_level, glucose_level_list;
+    
+    
 	vector<double> fitnesses;
+    // new (correct) index for mutual information
+    double mutinfagent,fitnessmif,agcombinedfitness,origprecoderr,agfitness;
+    //
+    // new fitnesses for mutual information
+    vector<double> mutinffitnesses;
+    //
+    //Predicitve coding
+    double predcoderror;
+    vector<double> vecpredcoderror;
 	int food;
 	
 	double xPos,yPos,direction;
@@ -56,6 +80,7 @@ public:
 	bool retired;
 	int born;
 	int correct,incorrect;
+   
     vector<int> differentialCorrects;
 	
 	tAgent();
