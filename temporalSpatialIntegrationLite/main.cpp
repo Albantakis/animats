@@ -25,7 +25,7 @@ double perSiteMutationRate=0.005;
 int update=0;
 int repeats=1; //1;
 int maxAgent=100;
-int totalGenerations=30000;
+int totalGenerations=5000;
 char trialName[1000];
 double sensorNoise=0.0;
 
@@ -137,6 +137,14 @@ int main(int argc, char *argv[])
 				agent[i]->fitnesses.push_back((float)agent[i]->correct);
 			}
 		}
+        if(update == 2500){
+            for(i=0;i<agent.size();i++){
+                cout<<agent[i]->correct<<endl;
+                game->makeSingleAgentAnalysis(agent[i],argv[4],i);
+            }
+        }
+            
+            
 		//fflush(resFile);
 		maxFitness=0.0;
 

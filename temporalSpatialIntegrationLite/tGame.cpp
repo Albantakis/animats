@@ -80,7 +80,7 @@ void tGame::executeGame(tAgent* agent,FILE *f,double sensorNoise, int repeat){
 //                } else{
 //                    //world=patterns[i-2];
 //                    if (i == 0 || i == 2) world=7;
-//                    else if (i==1 || i == 3) world=1;
+//                    else if (i==1 || i == 3) world=15;
 //                    //cout<<world<<endl;
 //                }    
                 agent->resetBrain();
@@ -184,7 +184,7 @@ vector<vector<int> > tGame::executeGameLogStates(tAgent* agent,double sensorNois
 //                } else{
 //                    //world=patterns[i-2];
 //                    if (i == 0 || i == 2) world=7;
-//                    else if (i==1 || i == 3) world=1;
+//                    else if (i==1 || i == 3) world=15;
 //                    //cout<<world<<endl;
 //                }    
                 agent->resetBrain();
@@ -302,7 +302,7 @@ void tGame::analyseKO(tAgent* agent,int which, int setTo,double sensorNoise){
 //                } else{
 //                    //world=patterns[i-2];
 //                    if (i == 0 || i == 2) world=7;
-//                    else if (i==1 || i == 3) world=1;
+//                    else if (i==1 || i == 3) world=15;
 //                    //cout<<world<<endl;
 //                }    
                 agent->resetBrain();
@@ -662,6 +662,29 @@ void tGame::makeFullAnalysis(tAgent *agent,char *fileLead,double sensorNoise){
         }
         agent=agent->ancestor;
     }
+}
+
+void tGame::makeSingleAgentAnalysis(tAgent *agent,char *fileLead, int agent_num){
+    char filename[1000];
+    FILE *f;
+    int i,j;
+    //state to state table
+    sprintf(filename,"%s_%i_%i_FullLogicTable.txt",fileLead,agent->born,agent_num);
+    f=fopen(filename,"w+t");
+    agent->saveLogicTable(f);
+    fclose(f);
+    //fitness value
+    sprintf(filename,"%s_%i_Fitness.txt",fileLead,agent->born);
+    if(agent_num==0)
+        f=fopen(filename,"w+t");
+    else
+        f=fopen(filename,"a");
+    fprintf(f,"%i",agent->correct);
+    fprintf(f,"\n");
+    fclose(f);
+    //dot file
+    sprintf(filename,"%s_%i_%i_EdgeList.txt",fileLead,agent->born, agent_num);
+    agent->saveEdgeList(filename);
 }
 
 double tGame::computeRGiven(vector<int>W,vector<int>S,vector<int>B,int nrWstates,int nrSstates,int nrBstates){

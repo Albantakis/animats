@@ -46,6 +46,7 @@ public:
 
     void represenationPerNodeSummary(tAgent* agent,char* filename,double sensorNoise);
     void makeFullAnalysis(tAgent *agent,char *fileLead,double sensorNoise);
+    void makeSingleAgentAnalysis(tAgent *agent,char *fileLead,int agent_num);
     double computeRGiven(vector<int>W,vector<int>S,vector<int>B,int nrWstates,int nrSstates,int nrBstates);
     void applyNoise(tAgent *agent,double sensorNoise);
     double agentDependentRandDouble(void);
