@@ -81,6 +81,7 @@ public:
 	void retire(void);
 	void setupDots(int x, int y,double spacing);
 	void saveLogicTable(FILE *f);
+    void saveLogicTableSingleAnimat(FILE *f);
 	void saveGenome(FILE *f);
     void saveEdgeList(char *filename);
 };

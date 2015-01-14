@@ -8,6 +8,7 @@
  */
 
 #include "tHMM.h"
+#include <iostream>
 //#define feedbackON
 
 tHMMU::tHMMU(){
@@ -117,8 +118,10 @@ void tHMMU::update(unsigned char *states,unsigned char *newStates){
 	int i,j,r;
 	unsigned char mod;
 #ifdef feedbackON
+    cout<<"FeedbackON"<<endl;
 	if((nrPos!=0)&&(states[posFBNode]==1)){
 		for(i=0;i<chosenInPos.size();i++){
+            // A random number is drawn because the program allows for non-deterministic mechanisms
 			mod=(unsigned char)(rand()%(int)posLevelOfFB[i]);
 			if((hmm[chosenInPos[i]][chosenOutPos[i]]+mod)<255){
 				hmm[chosenInPos[i]][chosenOutPos[i]]+=mod;
@@ -138,11 +141,12 @@ void tHMMU::update(unsigned char *states,unsigned char *newStates){
 #endif
 	for(i=0;i<ins.size();i++)
 		I=(I<<1)+((states[ins[i]])&1);
+    // r is a random number between probably 1 and 255 and is only important for probabilistic gates
 	r=1+(rand()%(sums[I]-1));
 	j=0;
-//	cout<<I<<" "<<(int)hmm.size()<<" "<<(int)hmm[0].size()<<endl;
+    // for deterministic gates the while loop doesn't do anything except increase j until hmm[I][j] is 255
 	while(r>hmm[I][j]){
-		r-=hmm[I][j];
+        r-=hmm[I][j];
 		j++;
 	}
 	for(i=0;i<outs.size();i++)
@@ -158,6 +162,22 @@ void tHMMU::update(unsigned char *states,unsigned char *newStates){
 	while(chosenInNeg.size()>nrNeg) chosenInNeg.pop_front();
 	while(chosenOutNeg.size()>nrNeg) chosenOutNeg.pop_front();
 #endif
+}
+
+void tHMMU::deterministicUpdate(unsigned char *states,unsigned char *newStates){
+	int I=0;
+	int i,j;
+	unsigned char mod;
+	for(i=0;i<ins.size();i++)
+		I=(I<<1)+((states[ins[i]])&1);
+	j=0;
+    // r above doesn't do anything else then checking if hmm is larger than 0
+	while(1>hmm[I][j]){
+		j++;
+	}
+	for(i=0;i<outs.size();i++)
+		newStates[outs[i]]|=(j>>i)&1;
+    //newStates[outs[i]]=(j>>i)&1;
 }
 
 void tHMMU::show(void){

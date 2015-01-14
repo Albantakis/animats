@@ -671,7 +671,7 @@ void tGame::makeSingleAgentAnalysis(tAgent *agent,char *fileLead, int agent_num)
     //state to state table
     sprintf(filename,"%s_%i_%i_FullLogicTable.txt",fileLead,agent->born,agent_num);
     f=fopen(filename,"w+t");
-    agent->saveLogicTable(f);
+    agent->saveLogicTableSingleAnimat(f);
     fclose(f);
     //fitness value
     sprintf(filename,"%s_%i_Fitness.txt",fileLead,agent->born);

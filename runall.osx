@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd results/test2/
+cd results/test/
 
 for trial_num in 0
 do

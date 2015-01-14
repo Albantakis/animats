@@ -342,6 +342,29 @@ void tAgent::saveLogicTable(FILE *f){
 		fprintf(f,"\n");
 	}
 }
+
+void tAgent::saveLogicTableSingleAnimat(FILE *f){
+	int i,j,k;
+	fprintf(f,"0_t0,1_t0,2_t0,3_t0,4_t0,5_t0,6_t0,7_t0,,0_t1,1_t1,2_t1,3_t1,4_t1,5_t1,6_t1,7_t1\n");
+	for(i=0;i<256;i++){
+		for(j=0;j<8;j++){
+			fprintf(f,"%i,",(i>>j)&1);
+			states[j]=(i>>j)&1;
+		}  
+        // update States deterministically, without using random number generator
+        for(k=0;k<hmmus.size();k++)
+            hmmus[k]->deterministicUpdate(&states[0],&newStates[0]);
+        for(k=0;k<maxNodes;k++){
+            states[k]=newStates[k];
+            newStates[k]=0;
+        }
+		for(j=0;j<8;j++){
+			fprintf(f,",%i",states[j]);
+		}
+		fprintf(f,"\n");
+	}
+}
+
 void tAgent::saveGenome(FILE *f){
 	int i;
 	for(i=0;i<genome.size();i++)
